@@ -23,6 +23,7 @@ class Decoder {
       if (value instanceof Array) {
         if (key === 'anchors') {
           value = this.constructAnchorsJSON(value)
+          console.log("value" + value)
         }
         if (key === 'path') {
           value = this.constructPathJSON(value)
@@ -40,6 +41,7 @@ class Decoder {
 
   constructAnchorsJSON(anchors) {
     const chainKeymap = _.invertBy(Keymap.chain, (value) => value.id)
+    console.log(chainKeymap)
 
     return anchors.map((anchor) =>
       anchor.reduce((acc, val) => {
@@ -51,7 +53,7 @@ class Decoder {
           const networkKeymap = _.invert(Keymap.chain[chain].networks)
           return `${acc}:${networkKeymap[val[1]]}`
         }
-
+        
         return `${acc}:${cbor.decode(val[1]).toString('hex')}`
       }, 'blink')
     )
