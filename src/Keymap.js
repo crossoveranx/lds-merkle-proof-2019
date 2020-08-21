@@ -24,7 +24,7 @@ const chain = {
       mainnet: 1,
       ropsten: 3,
       rinkeby: 4,
-      bloxberg: 8995
+      bloxberg: 5
     }
   }
 }
